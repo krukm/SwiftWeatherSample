@@ -12,8 +12,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var sunrise: UILabel!
     @IBOutlet weak var sunset: UILabel!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         networkManager.getWeatherJSON() { weatherJson in

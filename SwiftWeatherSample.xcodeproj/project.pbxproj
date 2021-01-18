@@ -18,6 +18,7 @@
 		DF65195B25B3420D001F84A6 /* SwiftWeatherNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65195A25B3420D001F84A6 /* SwiftWeatherNetworkManager.swift */; };
 		DF65196025B39D34001F84A6 /* WeatherObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65195F25B39D34001F84A6 /* WeatherObject.swift */; };
 		DF65196525B3A579001F84A6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF65196425B3A578001F84A6 /* Constants.swift */; };
+		DF65197F25B61A3A001F84A6 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = DF65197E25B61A3A001F84A6 /* .gitignore */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		DF65195A25B3420D001F84A6 /* SwiftWeatherNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftWeatherNetworkManager.swift; sourceTree = "<group>"; };
 		DF65195F25B39D34001F84A6 /* WeatherObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherObject.swift; sourceTree = "<group>"; };
 		DF65196425B3A578001F84A6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DF65197E25B61A3A001F84A6 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				DF65195A25B3420D001F84A6 /* SwiftWeatherNetworkManager.swift */,
 				DF65195F25B39D34001F84A6 /* WeatherObject.swift */,
 				DF65196425B3A578001F84A6 /* Constants.swift */,
+				DF65197E25B61A3A001F84A6 /* .gitignore */,
 			);
 			path = SwiftWeatherSample;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF65197F25B61A3A001F84A6 /* .gitignore in Resources */,
 				DF65193125B0F16C001F84A6 /* LaunchScreen.storyboard in Resources */,
 				DF65192E25B0F16C001F84A6 /* Assets.xcassets in Resources */,
 				DF65192C25B0F16B001F84A6 /* Main.storyboard in Resources */,
