@@ -16,8 +16,8 @@ struct WeatherObject: Codable {
     var cod: Int
     
     struct Coord: Codable {
-        var lon: Double
-        var lat: Double
+        var lon: Double?
+        var lat: Double?
     }
     
     struct Weather: Codable {

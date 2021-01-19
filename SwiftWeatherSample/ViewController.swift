@@ -1,7 +1,11 @@
 import UIKit
+import CoreLocation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UISearchBarDelegate, CLLocationManagerDelegate {
     let networkManager = SwiftWeatherNetworkManager()
+    let locationManager = CLLocationManager()
+    var latitude: Double?
+    var longitude: Double?
 
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var currentTemp: UILabel!
@@ -11,19 +15,23 @@ class ViewController: UIViewController {
     @IBOutlet weak var humidity: UILabel!
     @IBOutlet weak var sunrise: UILabel!
     @IBOutlet weak var sunset: UILabel!
+    @IBOutlet weak var citySearch: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        networkManager.getWeatherJSON() { weatherJson in
-            
-            DispatchQueue.main.async {
-                self.setupView(currentWeather: weatherJson)
-            }
+        citySearch.delegate = self
+        
+        self.locationManager.requestAlwaysAuthorization()
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
         }
     }
     
     func setupView(currentWeather: WeatherObject) {
-        
         let formatTime = DateFormatter()
         formatTime.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
         formatTime.timeStyle = .short
@@ -62,6 +70,27 @@ class ViewController: UIViewController {
             }
         }
         return node
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let city = citySearch.text?.replacingOccurrences(of: " ", with: "%20") else { return }
+        
+        networkManager.getWeatherJSON(city: city) { weather in
+            DispatchQueue.main.async {
+                self.setupView(currentWeather: weather)
+                self.citySearch.text = ""
+            }
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        
+        networkManager.getWeatherJSON(lat: String(location.latitude), lon: String(location.longitude)) { weather in
+            DispatchQueue.main.async {
+                self.setupView(currentWeather: weather)
+            }
+        }
     }
 }
 
